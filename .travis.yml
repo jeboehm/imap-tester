@@ -1,12 +1,12 @@
 language: php
 
 php:
-- 5.5
+  - 5.5
 
 script:
-- composer install --dev
-- bin/console
-- bin/build
+  - composer install --dev
+  - bin/console
+  - bin/build
 
 deploy:
   provider: releases

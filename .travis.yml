@@ -1,0 +1,18 @@
+language: php
+
+php:
+- 5.5
+
+script:
+- composer install --dev
+- bin/console
+- bin/build
+
+deploy:
+  provider: releases
+  api_key:
+    secure: OogiJ7rpOjCJ0oOlMOwy77FWIXo8oOVpYTCWqY6RwG1GYgiIXMXR06neOGRBsTFhOnC2hOx9JBKwJcCljT4/f4S/2pFZ142HwnbFFEzEwqZeZoLmO/XA3E274U+xofWY43plwedzEJ0ard47wJ0qmgZys+0SZprcx15jT9VljkcBheeCzYyWoyZfFJ4QywMTbSFwRtolqGI9meo66Y4Ss4X3VxFqguN9YplzzLwzMqPIjSDbGflQl4sL0N2U0DMW8C6MV8GGtdtIFR/guzGzz3wXnZLdTrJwz0KqenzI/jBM5dnnijE663P4N23WoDn1KbxDW514/CUaQ+bPuDRndAhaXy3h/FuKphHsaEy8LlF35Sw7rjIsUzxfU4vsozx/Z9QvrAmdNexjwBZsUpNtJ2JKawVrDM8roQHlSL+W+fdFfmmWoHPbp+/oh/RfbeuqKuspx0fEtTbFss3g85Rnyh4ImkuaAaa5T4te9tMDU6cc2TlvRW3pn/0xNsXabBSY42cdkc/Xxf7yAKi+JjDOjDgtfZ/4UVhPV54BufgdK/XgPhYRg8RHonZiaAJeOP4q1+Za/AuwOyUYM/D91I9Bpiev1SUOqKcQcXurTTzHrLd0casb7STs8hD883aK9fz+qZs2W7r1J6XXpiPRdNr8VVmN+gJBmPVBN/PkKu6sxeo=
+  file: imap-tester.phar
+  skip_cleanup: true
+  on:
+    tags: true

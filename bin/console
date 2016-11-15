@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Command\CountCommand;
+use Symfony\Component\Console\Application;
+
+$app = new Application('imap-tester');
+$app->add(new CountCommand());
+
+$app->run();

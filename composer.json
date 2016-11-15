@@ -1,0 +1,26 @@
+{
+  "name": "jeboehm/imap-tester",
+  "description": "Tests imap and pop3 mailboxes.",
+  "require": {
+    "symfony/console": "~2.1",
+    "php-imap/php-imap": "~2.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "jeboehm",
+      "email": "j.boehm@ressourcenkonflikt.de"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "": "src/"
+    }
+  },
+  "bin": [
+    "bin/console"
+  ],
+  "require-dev": {
+    "clue/phar-composer": "~1.0"
+  }
+}

@@ -40,7 +40,7 @@ class ImapService
 
         $this->mailbox = new Mailbox(
             sprintf(
-                '{%s:%s/%s/%s}%s',
+                '{%s:%s/%s/%s/novalidate-cert}%s',
                 $host,
                 $port,
                 $serverType,

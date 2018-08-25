@@ -2,8 +2,10 @@
   "name": "jeboehm/imap-tester",
   "description": "Tests imap and pop3 mailboxes.",
   "require": {
+    "php": "^7.0",
+    "ext-imap": "*",
     "symfony/console": "~2.1",
-    "php-imap/php-imap": "~2.0"
+    "php-imap/php-imap": "~3.0"
   },
   "license": "MIT",
   "authors": [

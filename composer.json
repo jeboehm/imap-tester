@@ -4,7 +4,7 @@
   "require": {
     "php": "^7.0",
     "ext-imap": "*",
-    "symfony/console": "~2.1",
+    "symfony/console": "~4.1",
     "php-imap/php-imap": "~3.0"
   },
   "license": "MIT",
@@ -19,10 +19,11 @@
       "": "src/"
     }
   },
-  "bin": [
-    "bin/console"
-  ],
-  "require-dev": {
-    "clue/phar-composer": "~1.0"
+  "scripts": {
+    "build": [
+      "curl -LSs https://box-project.github.io/box2/installer.php | php",
+      "./box.phar --version",
+      "php -d phar.readonly=off ./box.phar build"
+    ]
   }
 }

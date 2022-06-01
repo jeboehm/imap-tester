@@ -33,7 +33,7 @@ jobs:
 
       - name: Install Phive dependencies
         run: |
-          phive install
+          phive install --force-accept-unsigned
 
       - name: Compile phar
         run: |

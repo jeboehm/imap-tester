@@ -2,18 +2,12 @@
   "name": "jeboehm/imap-tester",
   "description": "Tests imap and pop3 mailboxes.",
   "require": {
-    "php": "^7.0",
+    "php": "^8.0",
     "ext-imap": "*",
-    "symfony/console": "~4.1",
-    "php-imap/php-imap": "~3.0"
+    "symfony/console": "~5.4",
+    "php-imap/php-imap": "~5.0"
   },
   "license": "MIT",
-  "authors": [
-    {
-      "name": "jeboehm",
-      "email": "j.boehm@ressourcenkonflikt.de"
-    }
-  ],
   "autoload": {
     "psr-0": {
       "": "src/"
@@ -21,9 +15,8 @@
   },
   "scripts": {
     "build": [
-      "curl -LSs https://box-project.github.io/box2/installer.php | php",
-      "./box.phar --version",
-      "php -d phar.readonly=off ./box.phar build"
+      "tools/box --version",
+      "php -d phar.readonly=off tools/box build"
     ]
   }
 }

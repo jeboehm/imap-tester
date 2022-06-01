@@ -16,7 +16,7 @@
   "scripts": {
     "build": [
       "tools/box --version",
-      "php -d phar.readonly=off tools/box build"
+      "php -d phar.readonly=off tools/box compile"
     ]
   }
 }

@@ -43,6 +43,9 @@ jobs:
       - name: Run phar
         run: ./imap-tester.phar
 
+      - name: Run php-cs-fixer
+        run: tools/php-cs-fixer fix --allow-risky=yes --diff --dry-run
+
       - name: Release
         uses: softprops/action-gh-release@v1
         with:

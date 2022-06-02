@@ -18,5 +18,8 @@
       "tools/box --version",
       "php -d phar.readonly=off tools/box compile"
     ]
+  },
+  "require-dev": {
+    "rector/rector": "^0.13.3"
   }
 }

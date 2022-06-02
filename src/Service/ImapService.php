@@ -1,5 +1,13 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of the imap-tester package.
+ * (c) Jeffrey Boehm <https://github.com/jeboehm/imap-tester>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Service;
 
 use InvalidArgumentException;
@@ -7,10 +15,7 @@ use PhpImap\Mailbox;
 
 class ImapService
 {
-    /**
-     * @var Mailbox
-     */
-    private $mailbox;
+    private Mailbox $mailbox;
 
     public function __construct($host, $port, $username, $password, $folder)
     {
@@ -52,7 +57,7 @@ class ImapService
         );
     }
 
-    public function doCount()
+    public function doCount(): int
     {
         return $this->mailbox->countMails();
     }

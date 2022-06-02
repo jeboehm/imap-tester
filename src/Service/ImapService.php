@@ -12,12 +12,13 @@ namespace Service;
 
 use InvalidArgumentException;
 use PhpImap\Mailbox;
+use RuntimeException;
 
 class ImapService
 {
     private Mailbox $mailbox;
 
-    public function __construct($host, $port, $username, $password, $folder)
+    public function __construct($host, $port, $username, $password)
     {
         switch ($port) {
             case 143:
@@ -45,20 +46,38 @@ class ImapService
 
         $this->mailbox = new Mailbox(
             sprintf(
-                '{%s:%s/%s/%s/novalidate-cert}%s',
+                '{%s:%s/%s/%s/novalidate-cert}',
                 $host,
                 $port,
                 $serverType,
                 $sslType,
-                $folder
             ),
             $username,
             $password
         );
+
+        $this->mailbox->setConnectionArgs(CL_EXPUNGE);
     }
 
-    public function doCount(): int
+    public function doCount(string $folder): int
     {
+        $this->mailbox->switchMailbox($folder);
+
         return $this->mailbox->countMails();
+    }
+
+    public function doMove(string $folder, int $messageIndex, string $targetFolder): bool
+    {
+        $this->mailbox->switchMailbox($folder);
+        $mailsIds = $this->mailbox->searchMailbox();
+
+        if (!array_key_exists($messageIndex, $mailsIds)) {
+            throw new RuntimeException('Mail was not found.');
+        }
+
+        $countBefore = $this->doCount($folder);
+        $this->mailbox->moveMail($mailsIds[0], $targetFolder);
+
+        return $this->doCount($folder) !== $countBefore;
     }
 }

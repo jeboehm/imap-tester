@@ -24,7 +24,9 @@ class CountCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $result = $this->getImapService($input)->doCount();
+        $result = $this->getImapService($input)->doCount(
+            $input->getArgument('folder')
+        );
 
         $output->writeln($result);
 

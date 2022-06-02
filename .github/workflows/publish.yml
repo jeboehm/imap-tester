@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Phive dependencies
         run: |
-          phive install --force-accept-unsigned
+          phive install --force-accept-unsigned --trust-gpg-keys 0xE82B2FB314E9906E
 
       - name: Compile phar
         run: |

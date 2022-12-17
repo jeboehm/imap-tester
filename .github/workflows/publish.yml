@@ -17,28 +17,14 @@ jobs:
           tools: phive
           coverage: xdebug
 
-      - name: Get composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
       - name: Install Composer dependencies
-        run: |
-          composer install --no-progress --prefer-dist --optimize-autoloader
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Install Phive dependencies
-        run: |
-          phive install --force-accept-unsigned --trust-gpg-keys 0xE82B2FB314E9906E
+        run: phive install --trust-gpg-keys 2DF45277AEF09A2F,E82B2FB314E9906E
 
       - name: Compile phar
-        run: |
-          composer run build
+        run: composer run build
 
       - name: Run phar
         run: ./imap-tester.phar

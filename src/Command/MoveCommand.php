@@ -21,8 +21,9 @@ class MoveCommand extends AbstractCommand
         parent::configure();
 
         $this->setName('test:move');
-        $this->addArgument('messageIndex', InputArgument::REQUIRED);
-        $this->addArgument('targetFolder', InputArgument::REQUIRED);
+        $this->setDescription('Move messages from one folder to another');
+        $this->addArgument('messageIndex', InputArgument::REQUIRED, 'Message index (positive integer)');
+        $this->addArgument('targetFolder', InputArgument::REQUIRED, 'Target folder to move the mail to');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

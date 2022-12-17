@@ -20,11 +20,11 @@ abstract class AbstractCommand extends Command
 {
     protected function configure(): void
     {
-        $this->addArgument('host', InputArgument::REQUIRED);
-        $this->addArgument('port', InputArgument::REQUIRED);
-        $this->addArgument('username', InputArgument::REQUIRED);
-        $this->addArgument('password', InputArgument::REQUIRED);
-        $this->addArgument('folder', InputArgument::REQUIRED);
+        $this->addArgument('host', InputArgument::REQUIRED, 'POP3 / IMAP host');
+        $this->addArgument('port', InputArgument::REQUIRED, 'POP3 / IMAP port');
+        $this->addArgument('username', InputArgument::REQUIRED, 'Username');
+        $this->addArgument('password', InputArgument::REQUIRED, 'Password');
+        $this->addArgument('folder', InputArgument::REQUIRED, 'Folder to take action on (e.g. INBOX)');
     }
 
     final protected function getImapService(InputInterface $input): ImapService

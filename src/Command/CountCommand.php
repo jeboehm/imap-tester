@@ -20,6 +20,7 @@ class CountCommand extends AbstractCommand
         parent::configure();
 
         $this->setName('test:count');
+        $this->setDescription('Count messages in a folder');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

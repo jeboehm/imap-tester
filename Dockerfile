@@ -1,9 +1,8 @@
 FROM composer:2.3 AS composer
 FROM php:8.0-alpine
 
-RUN apk --no-cache add openssl-dev imap-dev gnupg icu-dev && \
-    docker-php-ext-configure imap --with-imap --with-imap-ssl && \
-    docker-php-ext-install imap intl && \
+RUN apk --no-cache add gnupg icu-dev && \
+    docker-php-ext-install intl && \
     wget -O phive.phar "https://phar.io/releases/phive.phar" && \
     wget -O phive.phar.asc "https://phar.io/releases/phive.phar.asc" && \
     gpg --keyserver hkps://keys.openpgp.org --recv-keys 0x6AF725270AB81E04D79442549D8A98B29B2D5D79 && \

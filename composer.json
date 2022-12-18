@@ -3,9 +3,8 @@
   "description": "Tests imap and pop3 mailboxes.",
   "require": {
     "php": "^8.0",
-    "ext-imap": "*",
     "symfony/console": "~5.4",
-    "php-imap/php-imap": "~5.0"
+    "bytestream/horde-imap-client": "^2.31"
   },
   "license": "MIT",
   "autoload": {

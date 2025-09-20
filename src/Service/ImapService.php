@@ -15,32 +15,8 @@ class ImapService
     /** @var \Horde_Imap_Client_Socket_Pop3|\Horde_Imap_Client_Socket */
     private \Horde_Imap_Client_Base $client;
 
-    public function __construct($host, $port, $username, $password)
+    public function __construct($host, $port, $username, $password, $protocol, $sslType)
     {
-        switch ($port) {
-            case 143:
-                $serverType = 'imap';
-                $sslType = 'tls';
-                break;
-            case 993:
-                $serverType = 'imap';
-                $sslType = 'ssl';
-                break;
-
-            case 110:
-                $serverType = 'pop3';
-                $sslType = 'tls';
-                break;
-
-            case 995:
-                $serverType = 'pop3';
-                $sslType = 'ssl';
-                break;
-
-            default:
-                throw new \InvalidArgumentException('Port not known');
-        }
-
         $options = [
             'username' => $username,
             'password' => $password,
@@ -49,7 +25,7 @@ class ImapService
             'secure' => $sslType,
         ];
 
-        if ('pop3' === $serverType) {
+        if ('pop3' === $protocol) {
             $this->client = new \Horde_Imap_Client_Socket_Pop3($options);
         } else {
             $this->client = new \Horde_Imap_Client_Socket($options);

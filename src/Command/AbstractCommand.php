@@ -24,6 +24,8 @@ abstract class AbstractCommand extends Command
         $this->addArgument('port', InputArgument::REQUIRED, 'POP3 / IMAP port');
         $this->addArgument('username', InputArgument::REQUIRED, 'Username');
         $this->addArgument('password', InputArgument::REQUIRED, 'Password');
+        $this->addArgument('protocol', InputArgument::REQUIRED, 'Protocol (imap or pop3)');
+        $this->addArgument('sslType', InputArgument::REQUIRED, 'SSL type (ssl or tls)');
         $this->addArgument('folder', InputArgument::REQUIRED, 'Folder to take action on (e.g. INBOX)');
     }
 

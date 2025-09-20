@@ -14,14 +14,10 @@ jobs:
         with:
           php-version: 8.0
           extensions: mbstring, xml, ctype, iconv, intl, imap, fileinfo
-          tools: phive
           coverage: xdebug
 
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
-
-      - name: Install Phive dependencies
-        run: phive install --trust-gpg-keys 2DF45277AEF09A2F,E82B2FB314E9906E
 
       - name: Compile phar
         run: composer run build

@@ -14,13 +14,15 @@
   },
   "scripts": {
     "build": [
-      "tools/box --version",
-      "php -d phar.readonly=off tools/box compile"
+      "vendor/bin/box --version",
+      "php -d phar.readonly=off vendor/bin/box compile"
     ],
-    "csfix": "tools/php-cs-fixer fix --allow-risky=yes",
-    "rector": "rector"
+    "csfix": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+    "rector": "vendor/bin/rector"
   },
   "require-dev": {
-    "rector/rector": "^0.13.3"
+    "rector/rector": "^0.13.3",
+    "humbug/box": "^3.16.0",
+    "php-cs-fixer/shim": "^3.8.0"
   }
 }

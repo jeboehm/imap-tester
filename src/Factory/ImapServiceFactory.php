@@ -21,7 +21,9 @@ class ImapServiceFactory
             $input->getArgument('host'),
             $input->getArgument('port'),
             $input->getArgument('username'),
-            $input->getArgument('password')
+            $input->getArgument('password'),
+            $input->getArgument('protocol'),
+            $input->getArgument('sslType')
         );
     }
 }
